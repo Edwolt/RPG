@@ -1,0 +1,5 @@
+Dados terá Jsons com definições dos principais e de personagens
+Personagens terá pastas com tudo necessáro para cria-los e seus comportamentos
+Blocos tera o comportamento e as imagens de elementos do jogo
+Mapa incluirá a formação através dos Blocos
+Modulos tera os trechos de código para o funcionamento do jogo
