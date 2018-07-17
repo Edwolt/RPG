@@ -38,3 +38,5 @@ class Janela:
                     quit(0)
                 if event.key == pygame.K_F11:
                     self.fullscreen = not self.fullscreen
+                    self.tamanho(self.tam, self.fullscreen)
+            
