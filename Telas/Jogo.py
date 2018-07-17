@@ -13,18 +13,13 @@ class Jogo:
         self.tam = tam
         quad = min(self.tam[0] // self.min, self.tam[1] // self.min)
         self.quad = quad, quad
-        print(f'Quad_size:{quad}')
         self.tab = [
             [pygame.Surface(self.quad)] * (self.tam[1] // self.quad[1] + 1)
             for _ in range(self.tam[0] // self.quad[0] + 1)
         ]
-        print(f'Tab: {len(self.tab)}x{len(self.tab[0])}')
         ret0 = self.quad[0] - self.tam[0] % self.quad[0]
         ret1 = self.quad[1] - self.tam[1] % self.quad[1]
-        print(f"Retorno[0]: {self.tam[0]} % {self.quad[0]} = {ret0}")
-        print(f"Retorno[1]: {self.tam[1]} % {self.quad[1]} = {ret1}")
         self.retorno = ret0 // 2, ret1 // 2
-        print(f'Retorno: {self.retorno}')
 
     def surface(self):
         from random import randint

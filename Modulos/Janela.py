@@ -16,7 +16,7 @@ class Janela:
             self.fullscreen = True
             self.display = pygame.display.set_mode(self.tam, pygame.FULLSCREEN)
         else:
-            self.display = pygame.display.set_mode(self.tam)
+            self.display = pygame.display.set_mode(self.tam, pygame.RESIZABLE)
         self.tela.tamanho(self.tam)
 
     def executar(self):
@@ -25,7 +25,6 @@ class Janela:
         pygame.display.flip()
 
     def eventos(self):
-        """Analisará eventos"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -39,4 +38,7 @@ class Janela:
                 if event.key == pygame.K_F11:
                     self.fullscreen = not self.fullscreen
                     self.tamanho(self.tam, self.fullscreen)
-            
+            if event.type == pygame.VIDEORESIZE:  # FIXME Não está Redimensionando corretamente
+                self.tam = event.size
+                self.tamanho(self.tam, self.fullscreen)
+                self.tela.tamanho(self.tam)
