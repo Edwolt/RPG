@@ -3,9 +3,10 @@ import pygame
 from random import randint
 
 
-class Grama(Bloco):
+class Arvore(Bloco):
     def __init__(self):
-        self.num = randint(0, 1)
+        self.num = randint(1, 2)
+        self.bloqueia = True
 
     def surface(self):
         return pygame.image.load(f'Blocos/Grama/{self.num}.png')
