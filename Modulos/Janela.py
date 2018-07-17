@@ -1,14 +1,32 @@
 import pygame
-from Blocos.Grama.Grama import Grama
+from Telas.Jogo import Jogo
 
 
 class Janela:
     def __init__(self):
-        self.tela = pygame.display.set_mode((500, 500))
-        self.tabela = [[Grama() for _ in range(10)] for _ in range(10)]
+        self.display = None
+        self.tela = Jogo()
 
-    def exibir(self):
-        for i in range(10):
-            for j in range(10):
-                self.tela.blit(self.tabela[i][j].surface(), (50 * i, 50 * j))
+    def tamanho(self, largura, altura, fullscreen=False):
+        if fullscreen:
+            self.display = pygame.display.set_mode((largura, altura), pygame.FULLSCREEN)
+        else:
+            self.display = pygame.display.set_mode((largura, altura))
+        print(self.display.__class__)
+        self.tela.tamanho(largura, altura)
+
+    def executar(self):
+        self.display.blit(self.tela.surface(), (0, 0))
+        self.eventos()
         pygame.display.flip()
+
+    def eventos(self):
+        """Analisará eventos"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit(0)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    quit(0)

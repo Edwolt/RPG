@@ -1,11 +1,13 @@
 import pygame
 from Modulos.Janela import Janela
-import Modulos.Eventos as Eventos
 
 pygame.init()
 janela = Janela()
-# janela.tamanho()
+info = pygame.display.Info()
+janela.tamanho(info.current_w, info.current_h, fullscreen=True)
+fps = 30
+clock = pygame.time.Clock()
 
 while True:
-    janela.exibir()
-    Eventos.eventos()
+    janela.executar()
+    clock.tick(fps)
