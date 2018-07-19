@@ -3,9 +3,9 @@ import pygame
 from random import randint
 
 
-class Areia(Bloco):
+class Bloco(Bloco):
     def __init__(self):
-        self.num = randint(1, 2)
+        self.num = randint(0, 1)
 
     def surface(self):
-        return pygame.image.load(f'Blocos/Grama/{self.num}.png')
+        return pygame.image.load(f'Blocos/Areia/{self.num}.png')
