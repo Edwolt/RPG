@@ -6,7 +6,7 @@ class Janela:
     def __init__(self):
         self.display = None
         self.tela = Jogo()
-        self.fullscreen = False
+        self.__fullscreen = False
         self.tam = 100, 100
 
     def tamanho(self, tam, fullscreen=False):
@@ -18,7 +18,7 @@ class Janela:
         self.tam = tam
         print(f'Resolução: {self.tam}' + ' Fullscreen' if fullscreen else '')
         if fullscreen:
-            self.fullscreen = True
+            self.__fullscreen = True
             self.display = pygame.display.set_mode(self.tam, pygame.FULLSCREEN)
         else:
             self.display = pygame.display.set_mode(self.tam, pygame.RESIZABLE)
@@ -30,10 +30,10 @@ class Janela:
         pygame.display.flip()
 
     def fullscreen(self):
-        self.fullscreen = not self.fullscreen
-        self.tamanho(self.tam, self.fullscreen)
+        self.__fullscreen = not self.__fullscreen
+        self.tamanho(self.tam, self.__fullscreen)
 
     def resize(self, size):  # FIXME Não está Redimensionando corretamente
         self.tam = size
-        self.tamanho(self.tam, self.fullscreen)
+        self.tamanho(self.tam, self.__fullscreen)
         self.tela.tamanho(self.tam)

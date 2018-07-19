@@ -1,31 +1,14 @@
 import pygame
 from Modulos.Janela import Janela
+from Modulos.Loop import Loop
 
 pygame.init()
+
 janela = Janela()
 info = pygame.display.Info()
 janela.tamanho((500, 500))
+
 fps = 30
-clock = pygame.time.Clock()
 
-
-def eventos():
-    """Verifique os eventos"""
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit(0)
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                quit(0)
-            if event.key == pygame.K_F11:
-                janela.fullscreen()
-        if event.type == pygame.VIDEORESIZE:
-            janela.resize(event.size)
-
-
-while True:
-    janela.executar()
-    eventos()
-    clock.tick(fps)
+loop = Loop(janela, fps)
+loop.executar()
