@@ -21,10 +21,8 @@ def eventos():
                 quit(0)
             if event.key == pygame.K_F11:
                 janela.fullscreen()
-        if event.type == pygame.VIDEORESIZE:  # FIXME Não está Redimensionando corretamente
-            self.tam = event.size
-            self.tamanho(self.tam, self.fullscreen)
-            self.tela.tamanho(self.tam)
+        if event.type == pygame.VIDEORESIZE:
+            janela.resize(event.size)
 
 
 while True:

@@ -32,3 +32,8 @@ class Janela:
     def fullscreen(self):
         self.fullscreen = not self.fullscreen
         self.tamanho(self.tam, self.fullscreen)
+
+    def resize(self, size):  # FIXME Não está Redimensionando corretamente
+        self.tam = size
+        self.tamanho(self.tam, self.fullscreen)
+        self.tela.tamanho(self.tam)
