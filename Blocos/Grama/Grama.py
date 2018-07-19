@@ -9,7 +9,6 @@ VEL = 10
 class Flor(Bloco):
     def __init__(self):
         self.frame = 0
-        print('Hoje está muito florido')
         self.d = 1
 
     def surface(self) -> pygame.Surface:

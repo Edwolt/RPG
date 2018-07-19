@@ -10,7 +10,14 @@ class Mapa():
         :return:list de list com nome dos blocos
         """
         data = json.load(open(f'Mapa/{mapa}.json'))
-        self.blocos = data['Mapa']
+        blocos = data['Mapa']
+        self.blocos = []
+        for aux in blocos:
+            linha = []
+            for b in aux:
+                c = imp(f'Blocos.{b}.{b}')
+                linha.append(c.Bloco())
+            self.blocos.append(linha)
         self.coord = coord
 
     def mapa(self, tam):
@@ -18,11 +25,5 @@ class Mapa():
         ij = self.coord[1] - tam[1] // 2
         fi = ii + tam[0]
         fj = ij + tam[1]
-
-        tiles = [[None] * tam[1] for _ in range(tam[0])]
-        for i in range(fi - ii):
-            for j in range(fj - ij):
-                aux = self.blocos[ii + i][ij + j]
-                c = imp(f'Blocos.{aux}.{aux}')
-                tiles[i][j] = c.Bloco()
-        return tiles
+        mapa = [i[ij:fj] for i in self.blocos[ii:fi]]
+        return mapa

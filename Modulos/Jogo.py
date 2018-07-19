@@ -9,7 +9,7 @@ class Jogo:
         self.tab = [[None]]
         self.tam = None
         self.quad = 50, 50  # Dimensões do quadrado
-        self.min = 10  # Número mínimo de quadrados (altura e largura)
+        self.min = 15  # Número mínimo de quadrados (altura e largura)
         self.retorno = None
         self.mapa = Mapa('Teste', (15, 15))
         self.principal = Principal()
