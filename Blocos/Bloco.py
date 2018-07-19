@@ -2,6 +2,7 @@ import sys
 
 
 class Bloco:
+    """'Interface' para todos os blocos"""
     colide = False  # É impossivel passar por cima?
 
     def surface(self):
@@ -15,6 +16,7 @@ class Bloco:
 
 
 class Estruturas:
+    """'Interface' para todas as estruturas"""
     def surface(self):
         """
         :return: Surface com a imagem da estrutura

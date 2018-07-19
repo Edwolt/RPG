@@ -12,31 +12,40 @@ class Mapa():
         """
         data = json.load(open(f'Mapa/{mapa}.json'))
         blocos = data['Mapa']
-        self.blocos = []
+        self.__blocos = []
         for aux in blocos:  # intancia todos os blocos
             linha = []
             for b in aux:
                 c = imp(f'Blocos.{b}.{b}')
                 linha.append(c.Bloco())
-            self.blocos.append(linha)
+            self.__blocos.append(linha)
         self.coord = coord
         self.principal = Principal()
 
     def get(self, tam):
-        return self.mapa(tam), self.personagens(tam)
-
-    def mapa(self, tam):
         """
         :param tam: Tamanho necessário
+        :return: mapa, personagens*
+        persnoagens = lista de (personagem, (coordenadas))
+        """
+        return self.blocos(tam), self.personagens(tam)
+
+    def blocos(self, tam):
+        """
+        :param tam: Tamanho necessário do mapa
         :return: list de list com instância de todos os blocos a ser exibidos
         """
         ii = self.coord[0] - tam[0] // 2
         ij = self.coord[1] - tam[1] // 2
         fi = ii + tam[0]
         fj = ij + tam[1]
-        mapa = [i[ij:fj] for i in self.blocos[ii:fi]]
+        mapa = [i[ij:fj] for i in self.__blocos[ii:fi]]
         return mapa
 
     def personagens(self, tam):
+        """
+        :param tam: Tamanho necessário do mapa
+        :return: list de list com instância de todos os blocos a ser exibidos
+        """
         coord = tam[0] // 2, tam[1] // 2
         return ((self.principal, coord),)

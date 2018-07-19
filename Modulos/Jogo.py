@@ -4,7 +4,7 @@ from Modulos.Mapa import Mapa
 
 class Jogo:
     def __init__(self):
-        self.dtab = 1, 1
+        self.tab = 1, 1  # Tamanho do mapa
         self.tam = None
         self.quad = 50, 50  # Dimensões do quadrado
         self.min = 15  # Número mínimo de quadrados (altura e largura)
@@ -21,8 +21,8 @@ class Jogo:
         quad = min(self.tam[0] // self.min, self.tam[1] // self.min)
         self.quad = quad, quad
 
-        self.dtab = self.tam[0] // self.quad[0] + 1, self.tam[1] // self.quad[1] + 1
-        self.cprincipal = self.dtab[0] // 2, self.dtab[1] // 2
+        self.tab = self.tam[0] // self.quad[0] + 1, self.tam[1] // self.quad[1] + 1
+        self.cprincipal = self.tab[0] // 2, self.tab[1] // 2
 
         ret0 = self.quad[0] - self.tam[0] % self.quad[0]
         ret1 = self.quad[1] - self.tam[1] % self.quad[1]
@@ -36,7 +36,7 @@ class Jogo:
         Gera uma Surface contendo a imagem a ser jogada na tela
         :return:Surface gerada com imagens renderizadas
         """
-        tab, personagens = self.mapa.get(self.dtab)
+        tab, personagens = self.mapa.get(self.tab)
         tela = pygame.Surface(self.tam)
 
         for i in range(len(tab)):

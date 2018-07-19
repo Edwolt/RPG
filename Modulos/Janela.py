@@ -30,10 +30,12 @@ class Janela:
         pygame.display.flip()
 
     def fullscreen(self):
+        """Alterna Fullscreen"""
         self.__fullscreen = not self.__fullscreen
         self.tamanho(self.tam, self.__fullscreen)
 
     def resize(self, size):  # FIXME Não está Redimensionando corretamente
+        """Redimensiona o tamanho da tela"""
         self.tam = size
         self.tamanho(self.tam, self.__fullscreen)
         self.tela.tamanho(self.tam)
