@@ -8,16 +8,12 @@ class Loop:
         self.clock_g = pygame.time.Clock()
         self.janela = janela
         self.fps = fps
-        self.Logica = None
-        self.Grafico = None
 
     def executar(self):
         """Dispara Threads"""
-        self.Logica = threading.Thread(target=self.logica, args=tuple())
-        self.Grafico = threading.Thread(target=self.grafico, args=tuple())
-        self.Grafico.daemon = True
-        self.Logica.start()
-        self.Grafico.start()
+        while True:
+            self.eventos()
+            self.janela.executar()
 
     def eventos(self):
         """Verifique os eventos"""
@@ -31,16 +27,3 @@ class Loop:
                     self.janela.fullscreen()
             if event.type == pygame.VIDEORESIZE:  # FIXME não se deve ter métodos concorrenco
                 self.janela.resize(event.size)
-
-    def logica(self):
-        """Executa eventos"""
-        while True:
-            self.eventos()
-            self.clock_l.tick(self.fps)
-            # print(f'Lógica_FPS: {self.clock_l.get_fps()}')
-
-    def grafico(self):
-        """Exibe janela e seu conteúdo"""
-        while True:
-            self.janela.executar()
-            # print(f'Gráfico_FPS: {self.clock_g.get_fps()}')
