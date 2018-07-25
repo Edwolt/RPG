@@ -1,6 +1,6 @@
 import pygame
 from Modulos.Janela import Janela
-from Modulos.Loop import Loop
+from Modulos import Loop
 
 pygame.init()
 
@@ -10,5 +10,6 @@ janela.tamanho((500, 500))
 
 fps = 30
 
-loop = Loop(janela, fps)
-loop.executar()
+Loop.janela = janela
+Loop.fps = fps
+Loop.executar()
