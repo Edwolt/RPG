@@ -6,7 +6,7 @@ pygame.init()
 
 janela = Janela()
 info = pygame.display.Info()
-janela.tamanho((500, 500))
+janela.tamanho({x = 500, y = 500}, nil)
 
 fps = 30
 

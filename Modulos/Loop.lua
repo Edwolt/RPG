@@ -1,7 +1,24 @@
-import pygame
-import threading
+Loop = {}
+Loop.__index = Loop
 
+function Loop:new(obj)
+	local obj = obj or {}
+	setmetatable(obj, self)
+	self.__index = self
 
+	--Clocks
+  obj.janela = janela
+  obj.fps = fps
+	return obj
+end
+
+function Loop:eventos()
+  -- não sei como fazer ou se essa classe continuara existindo
+end
+
+function executar
+end
+--[[
 class Loop:
     def __init__(self, janela, fps=0):
         self.clock_l = pygame.time.Clock()
@@ -27,3 +44,5 @@ class Loop:
                     self.janela.fullscreen()
             if event.type == pygame.VIDEORESIZE:  # FIXME não se deve ter métodos concorrenco
                 self.janela.resize(event.size)
+--]]
+return Loop

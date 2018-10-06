@@ -1,8 +1,25 @@
-import json
-from importlib import import_module as imp
+JSON = require "Libs/JSON"
 from Personagens.Principal.Principal import Principal
 
+Mapa = {}
+function Mapa:new (mapa, coord)
+  local obj = obj or {}
+	setmetatable(obj, self)
+	self.__index = self
 
+  obj.data = require mapa
+  obj.blocos = data.mapa
+
+  for i,v in ipairs(table_name) do
+    -- body...
+  end
+
+  return obj
+end
+
+function FunctionName (args)
+  -- body...
+end
 class Mapa():
     def __init__(self, mapa, coord):
         """
